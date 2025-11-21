@@ -24,14 +24,15 @@ export default async function getConversationById(conversationId: string) {
       return null;
     }
 
+    const conv = conversation as any;
     return {
-      _id: conversation._id.toString(),
-      name: conversation.name || null,
-      isGroup: conversation.isGroup || false,
-      lastMessageAt: conversation.lastMessageAt?.toISOString() || null,
-      createdAt: conversation.createdAt?.toISOString() || null,
-      updatedAt: conversation.updatedAt?.toISOString() || null,
-      users: (conversation as any).userIds.map((user: any) => ({
+      _id: conv._id.toString(),
+      name: conv.name || null,
+      isGroup: conv.isGroup || false,
+      lastMessageAt: conv.lastMessageAt?.toISOString() || null,
+      createdAt: conv.createdAt?.toISOString() || null,
+      updatedAt: conv.updatedAt?.toISOString() || null,
+      users: conv.userIds.map((user: any) => ({
         _id: user._id.toString(),
         name: user.name,
         email: user.email,
